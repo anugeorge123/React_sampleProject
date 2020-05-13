@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import { selectCountry} from '../api/Get'
-// import Post from './Post';
+import {selectCountry} from '../utils/Network'
 
 class Signup extends Component{
 
@@ -21,29 +20,29 @@ class Signup extends Component{
     }
 
     componentDidMount() {
-           selectCountry()
-        //   .then((response) => {
-        //     //   console.log(response.json())
-        //     return response.json();
-        //   })
-        //   .then(data => {//
-        //     console.log(data.country[0])
-        //     let countryFromApi = data.map(country => {
-        //       return {value: country, display: country}
-        //     });
+          selectCountry()
+            .then(res =>{
+                if(res.status === 200)
+                {
+                        console.log(res.data.data[0]["countryName"]);
+                        let x = res.data.data;
+                        console.log(x[0]["countryName"])
 
 
-        //     this.setState({
-        //       country: [{value: '', display: '(Select your Country)'}].concat(countryFromApi)
-        //     });
-        //   }).catch(error => {
-        //     // console.log(error);
-        //   });
-         
+                this.setState({ 
+                    country : x.map( (country, index ) => <option key={index} value={country.countryName} > {country.countryName}</option>)
+                        });
+                }
+                else{
+                    console.log("error");
+                }
+            })
+
+            .catch(error =>{
+                console.log("ERROR",error)
+            })   
       }
-    
-
-      
+         
     handleChange(event)
     {
         const target = event.target;
@@ -66,7 +65,7 @@ class Signup extends Component{
             country : this.state.country,
             
         };
-
+        console.log("ffcjgchghgh",user)
          axios.post('http://127.0.0.1:8000/accounts/signup',user)
         .then(res => { console.log(res.data)})
         .catch(err => console.log(err))
@@ -75,20 +74,18 @@ class Signup extends Component{
     render(){
 
         return(
-            <div align="center">
-
+            <div>
                 <h1>Signup</h1>
-                <form onSubmit={this.handleOnSubmit}>
-                  
+                <form>
                         username : <input type='text' name='username' onChange={this.handleChange}/> <br/><br/>
                         password : <input type='text' name='password' onChange={this.handleChange}/><br/><br/>
                         email :<input type='text' name='email' onChange={this.handleChange}/><br/><br/>
                         phone : <input type='text' name='phone' onChange={this.handleChange}/><br/><br/>
                         Country : 
                          <select>
-                        {this.state.country.map((country) => <option key={country.value} value={country.value}>{country.display}</option>)}
-                         </select>
-                         <button>Sign Up</button>
+                         {this.state.country}
+                         </select>                                        
+                         <button onClick={this.handleSubmit}>Sign Up</button>
                 </form>
 
             </div>

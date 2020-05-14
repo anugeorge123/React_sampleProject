@@ -7,7 +7,7 @@ import{
 } from 'react-router-dom';
 import Home from './components/Home';
 import Signup from './components/Signup';
-
+import Login from './components/Login';
 
 export default class App extends Component {
   render() {
@@ -23,6 +23,9 @@ export default class App extends Component {
               <li>
                 <Link to="/signup">SignUp</Link>
               </li>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
             </ul>
           </div>
           
@@ -33,6 +36,10 @@ export default class App extends Component {
 
             <Route path="/signup" >
               <Signup />
+            </Route>
+
+             <Route path="/login" >
+              <Login />
             </Route> 
 
           </Switch>

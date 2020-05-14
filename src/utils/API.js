@@ -38,9 +38,9 @@ export async function getData(url) {
 
 export async function createData(url, data) {
     const headers = {
-        'Authorization': `Token ${localStorage.getItem('token')?localStorage.getItem('token'):''}`,
+        'Authorization': `Token ${localStorage.getItem('token')?localStorage.getItem('token'):''}`, 
     }
-    try {
+       try {
        let res =axios.post(API_PATH.concat(url), data, {headers} )
        return res
     }

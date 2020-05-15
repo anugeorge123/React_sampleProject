@@ -13,6 +13,22 @@ class Login extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)   
 
+    const headers = {
+      'Authorization': `Token ${localStorage.getItem('token')?localStorage.getItem('token'):''}`, 
+  }
+  console.log("headerssssssssss",headers['Authorization'])
+  if (headers['Authorization']==="Token ")
+      {
+      console.log("logout")
+      }
+  else{
+      console.log("login")
+      alert("you are already logged in")
+      window.location="/editprofile"
+      
+  }
+
+
 }
 handleChange(event)
     {
@@ -42,14 +58,15 @@ handleChange(event)
             console.log(res.data['token'],"token")
             localStorage.setItem('token', res.data['token']);
              if (res.data['message'] === 'Success'){
-            alert("success");
+            alert("welcome");
+             window.location="/editprofile"
           }
           }
 
           console.log("response data",res.data);
        
        })
-        .catch(err => console.log("eroorrrr",err))
+        .catch(err => console.log("error",err))
     };
 
     render(){
@@ -62,6 +79,8 @@ handleChange(event)
                       password : <input type='text' name='password' onChange={this.handleChange}/><br/><br/>
                                                         
                        <button onClick={this.handleSubmit}>Login</button>
+                        <a href="/resetpassword">forgot password</a>
+                         
               </form>
 
           </div>

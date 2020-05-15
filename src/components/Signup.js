@@ -19,6 +19,21 @@ class Signup extends Component{
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+
+        const headers = {
+            'Authorization': `Token ${localStorage.getItem('token')?localStorage.getItem('token'):''}`, 
+        }
+        console.log("headerssssssssss",headers['Authorization'])
+        if (headers['Authorization']==="Token ")
+            {
+            console.log("logout")
+            }
+        else{
+            console.log("login")
+            alert("you are already logged in, Please logout for another sign-up")
+            window.location="/editprofile"
+            
+        }
         
     }
 

@@ -17,7 +17,23 @@ class EditProfile extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.loadProfile = this.loadProfile.bind(this) ;  
 
-}
+    const headers = {
+      'Authorization': `Token ${localStorage.getItem('token')?localStorage.getItem('token'):''}`, 
+  }
+  console.log("headerssssssssss",headers['Authorization'])
+  if (headers['Authorization']==="Token ")
+      {
+        alert("Please login")
+        window.location="/login"
+      }
+  else{
+      console.log("login")
+     
+      
+  }
+
+
+    }
 componentDidMount(){
  this.loadProfile(); 
 }
@@ -80,6 +96,7 @@ handleSubmit = (e)=>
 
       return(
           <div>
+            <a href="/logout">Logout</a>
               <h1>Edit Profile</h1>
               <form>                       
                       username : <input type='text' value = {this.state.username} name='username' onChange={this.handleChange}/> <br/><br/>
@@ -90,6 +107,7 @@ handleSubmit = (e)=>
                       city : <input type='text' value = {this.state.city} name='city' onChange={this.handleChange}/><br/><br/>
 
                        <button onClick={this.handleSubmit}>Update</button>
+                       
               </form>
 
           </div>

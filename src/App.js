@@ -30,20 +30,12 @@ export default class App extends Component {
               <li>
               <Link to="/login">Login</Link>
               </li>
-              <li>
-              <Link to="/resetpassword">Reset Password</Link>
-              </li>
-              <li>
-              <Link to="/resetpassword-confirm">Reset Password confirm</Link>
-              </li>
-
-              <li>
-              <Link to="/editprofile">Edit Profile</Link>
-              </li>
-
-              <li>
-              <Link to="/logout">Logout</Link>
-              </li>
+              
+              <Link to="/resetpassword"></Link>          
+              <Link to="/resetpassword-confirm"></Link>
+              <Link to="/editprofile"></Link>
+              <Link to="/logout"></Link>
+              
 
             </ul>
           </div>

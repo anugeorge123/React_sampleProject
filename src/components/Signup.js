@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import axios from 'axios';
-import {selectCountry} from '../utils/Network'
+import {selectCountry,selectState, selectCity} from '../utils/Network'
+import {createUser} from '../utils/API';
 
 class Signup extends Component{
 
@@ -13,6 +13,9 @@ class Signup extends Component{
             email : '',
             phone :'',
             country : [],
+            state :[],
+            city:[],
+            selectValue:''
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -24,13 +27,39 @@ class Signup extends Component{
             .then(res =>{
                 if(res.status === 200)
                 {
-                        console.log(res.data.data[0]["countryName"]);
                         let x = res.data.data;
-                        console.log(x[0]["countryName"])
-
-
+    
                 this.setState({ 
                     country : x.map( (country, index ) => <option key={index} value={country.countryName} > {country.countryName}</option>)
+                        });
+                }
+                else{
+                    console.log("error");
+                }
+            })
+
+            selectState()
+            .then(res =>{
+                if(res.status === 200)
+                {         
+                        let x = res.data.data;
+     
+                this.setState({ 
+                    state : x.map( (state, index ) => <option key={index} value={state.stateName} > {state.stateName}</option>)
+                        });
+                }
+                else{
+                    console.log("error");
+                }
+            })
+
+            selectCity()
+            .then(res =>{
+                if(res.status === 200)
+                {
+                        let x = res.data.data;
+                this.setState({ 
+                    city : x.map( (city, index ) => <option key={index} value={city.cityName} > {city.cityName}</option>)
                         });
                 }
                 else{
@@ -49,9 +78,10 @@ class Signup extends Component{
         const value = target.value;
         const name = target.name;
 
-        this.setState({
-            [name] : value
-        });
+        this.setState({[name] : value});
+
+        this.setState({selectValue:event.target.value});
+
     }
 
     handleSubmit = (e)=>
@@ -63,10 +93,14 @@ class Signup extends Component{
             email : this.state.email,
             phone : this.state.phone,
             country : this.state.country,
+            state : this.state.state,
+            city :this.state.city
             
         };
-        console.log("ffcjgchghgh",user)
-         axios.post('http://127.0.0.1:8000/accounts/signup',user)
+ 
+        console.log("city",user.city)
+        let apiUrl = 'accounts/signup/'
+        createUser(apiUrl)
         .then(res => { console.log(res.data)})
         .catch(err => console.log(err))
     };
@@ -82,9 +116,20 @@ class Signup extends Component{
                         email :<input type='text' name='email' onChange={this.handleChange}/><br/><br/>
                         phone : <input type='text' name='phone' onChange={this.handleChange}/><br/><br/>
                         Country : 
-                         <select>
+                         <select value={this.state.selectValue}  onChange={this.handleChange}>
                          {this.state.country}
-                         </select>                                        
+                         </select> <br/><br/>
+                        
+                         State : 
+                         <select value={this.state.selectValue}  onChange={this.handleChange}>
+                         {this.state.state}
+                         </select> <br/><br/>   
+
+                         City : 
+                         <select value={this.state.selectValue}  onChange={this.handleChange}>
+                         {this.state.city}
+                         </select> <br/><br/>
+
                          <button onClick={this.handleSubmit}>Sign Up</button>
                 </form>
 

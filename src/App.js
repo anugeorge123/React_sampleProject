@@ -8,6 +8,10 @@ import{
 import Home from './components/Home';
 import Signup from './components/Signup';
 import Login from './components/Login';
+import ResetPassword from './components/ResetPassword';
+import ResetPasswordConfirm from './components/ResetPasswordConfirm';
+import EditProfile from './components/EditProfile';
+import { Logout } from './components/Logout';
 
 export default class App extends Component {
   render() {
@@ -18,14 +22,29 @@ export default class App extends Component {
           <div>
             <ul>
             <li>
-                <Link to="/">Home</Link>
+              <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/signup">SignUp</Link>
+              <Link to="/signup">SignUp</Link>
               </li>
               <li>
-                <Link to="/login">Login</Link>
+              <Link to="/login">Login</Link>
               </li>
+              <li>
+              <Link to="/resetpassword">Reset Password</Link>
+              </li>
+              <li>
+              <Link to="/resetpassword-confirm">Reset Password confirm</Link>
+              </li>
+
+              <li>
+              <Link to="/editprofile">Edit Profile</Link>
+              </li>
+
+              <li>
+              <Link to="/logout">Logout</Link>
+              </li>
+
             </ul>
           </div>
           
@@ -41,6 +60,21 @@ export default class App extends Component {
              <Route path="/login" >
               <Login />
             </Route> 
+
+            <Route path="/resetpassword">
+              <ResetPassword />
+            </Route>
+            <Route path="/resetpassword-confirm">
+              <ResetPasswordConfirm />
+            </Route>
+
+            <Route path="/editprofile">
+              <EditProfile />
+            </Route>
+
+            <Route path="/logout">
+              <Logout />
+            </Route>
 
           </Switch>
         

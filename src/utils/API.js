@@ -20,15 +20,12 @@ export async function getData(url) {
        let res = await axios({
             url: API_PATH.concat(url),
             method: 'get',
-            // timeout: 8000,
             headers: headerInfo
 
         })
         if(res.status === 200){
-            // test for status you want, etc
             console.log(res.status)
         }
-        // Don't forget to return something
         return res
     }
     catch (err) {
@@ -40,8 +37,10 @@ export async function createData(url, data) {
     const headers = {
         'Authorization': `Token ${localStorage.getItem('token')?localStorage.getItem('token'):''}`, 
     }
+    console.log("headerrrrrrr",headers)
        try {
        let res =axios.post(API_PATH.concat(url), data, {headers} )
+       console.log(res,"restttttttttttttttttttt")
        return res
     }
     catch (err) {
@@ -49,18 +48,10 @@ export async function createData(url, data) {
     }
 }
 
+export async function createUser(url, data) {
 
-
-
-
-export async function patchData(url, data) {
-    const headers = {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': `Token ${localStorage.getItem('token')?localStorage.getItem('token'):''}`,
-    }
     try {
-       let res =axios.patch(API_PATH.concat(url), data ,{ headers: headers})
+       let res =axios.post(API_PATH.concat(url), data)
        return res
     }
     catch (err) {
@@ -68,18 +59,4 @@ export async function patchData(url, data) {
     }
 }
 
-export async function deleteData(url) {
-    const headers = {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': `Token ${localStorage.getItem('token')?localStorage.getItem('token'):''}`,
 
-    }
-    try {
-       let res = axios.delete(API_PATH.concat(url),{ headers: headers})
-       return res
-    }
-    catch (err) {
-        console.error(err);
-    }
-}

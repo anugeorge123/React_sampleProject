@@ -2,6 +2,24 @@ import React from "react";
 import axios from 'axios';
 import {API_PATH} from '../config';
 
+import { Button , Row, Col, Form, Input, Select} from "antd";
+import "antd/dist/antd.css";
+const FormItem = Form.Item;
+const layout = {
+    labelCol: {
+      span: 8,
+    },
+    wrapperCol: {
+      span: 16,
+    },
+  };
+  const tailLayout = {
+    wrapperCol: {
+      offset: 8,
+      span: 16,
+    },
+  };
+
 class ResetPassword extends React.Component {
 
   constructor(){
@@ -47,11 +65,23 @@ handleChange(event)
 
         return(
             <div>
-                <h1>Forgot Password</h1>
-                <form>
-                        Email : <input type='text' name='email' onChange={this.handleChange}/> <br/><br/>        
-                         <button onClick={this.handleSubmit}>Submit</button>
-                </form>
+                
+                <Form>
+                <FormItem {...tailLayout}  >
+                    <h1>Forgot Password?</h1>
+                    </FormItem>
+
+                    <FormItem {...layout} label="Email" >
+                    <Input  name='email' onChange={this.handleChange} style={{ width: 400 }} placeholder="Enter your email here" size="large"/> 
+                    </FormItem>
+
+                    <FormItem {...tailLayout}  >
+                    <Button type="primary" onClick={this.handleSubmit}>Submit</Button>
+                    </FormItem>
+
+        
+                       
+                </Form>
   
             </div>
           

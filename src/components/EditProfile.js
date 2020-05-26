@@ -1,6 +1,26 @@
 import React from "react";
 import { getData,createData } from "../utils/API";
 
+import { Button , Row, Col, Form, Input, Select} from "antd";
+import "antd/dist/antd.css";
+const FormItem = Form.Item;
+
+const layout = {
+  labelCol: {
+    span: 2,
+  },
+  wrapperCol: {
+    span: 16,
+  },
+};
+const tailLayout = {
+  wrapperCol: {
+    offset: 4,
+    span: 16,
+  },
+};
+
+
 class EditProfile extends React.Component {
 
   constructor(){
@@ -96,19 +116,59 @@ handleSubmit = (e)=>
 
       return(
           <div>
-            <a href="/logout">Logout</a>
-              <h1>Edit Profile</h1>
-              <form>                       
-                      username : <input type='text' value = {this.state.username} name='username' onChange={this.handleChange}/> <br/><br/>
-                      email : <input type='text' value = {this.state.email} name='email' onChange={this.handleChange}/><br/><br/>
-                      phone : <input type='text' value = {this.state.phone} name='phone' onChange={this.handleChange}/><br/><br/>
-                      country : <input type='text' value = {this.state.country} name='country' onChange={this.handleChange}/><br/><br/>
-                      state : <input type='text' value = {this.state.state} name='state' onChange={this.handleChange}/><br/><br/>
-                      city : <input type='text' value = {this.state.city} name='city' onChange={this.handleChange}/><br/><br/>
+            
+          
 
-                       <button onClick={this.handleSubmit}>Update</button>
+
+              
+              <Form>   
+
+              <FormItem {...tailLayout}>
+                <h1>Edit Profile</h1> 
+                </FormItem>
+
+                <FormItem {...layout} label = "Username" >
+                  <Input value = {this.state.username} onChange={this.handleChange} style={{ width: 300 }} name="username" size="large"/>
+                </FormItem>
+
+                <FormItem {...layout} label = "Email" >
+                  <Input value = {this.state.email} onChange={this.handleChange} style={{ width: 300 }} name="email" size="large"/>
+                </FormItem>
+
+                <FormItem {...layout} label = "Phone" >
+                  <Input value = {this.state.phone} onChange={this.handleChange} style={{ width: 300 }} name="phone" size="large"/>
+                </FormItem>
+
+                <FormItem {...layout} label = "Country" >
+         
+                  <Input value = {this.state.country} onChange={this.handleChange} style={{ width: 400 }} name="country" size="large"/>
+                </FormItem>
+
+                <FormItem {...layout} label = "State" >
+        
+                  <Input value = {this.state.state} onChange={this.handleChange} style={{ width: 400 }} name="state" size="large"/>
+                </FormItem>
+
+                <FormItem {...layout} label = "City" >
+             
+                  <Input value = {this.state.city} onChange={this.handleChange} style={{ width: 400 }} name="city" size="large"/>
+                </FormItem>
+
+                <FormItem {...tailLayout} >
+                <Button type="primary" onClick={this.handleSubmit}>Update</Button>
+                </FormItem>
+
+
+                      {/* username : <Input type='text' value = {this.state.username} name='username' onChange={this.handleChange}style={{ width: 400 }}/> <br/><br/>
+                      email : <Input type='text' value = {this.state.email} name='email' onChange={this.handleChange}style={{ width: 400 }}/><br/><br/>
+                      phone : <Input type='text' value = {this.state.phone} name='phone' onChange={this.handleChange}style={{ width: 400 }}/><br/><br/>
+                      country : <Input type='text' value = {this.state.country} name='country' onChange={this.handleChange}style={{ width: 400 }}/><br/><br/>
+                      state : <Input type='text' value = {this.state.state} name='state' onChange={this.handleChange}style={{ width: 400 }}/><br/><br/>
+                      city : <Input type='text' value = {this.state.city} name='city' onChange={this.handleChange}style={{ width: 400 }}  /><br/><br/> */}
+
+                       {/* <Button type="primary" onClick={this.handleSubmit}>Update</Button> */}
                        
-              </form>
+              </Form>
 
           </div>
         

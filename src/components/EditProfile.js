@@ -1,7 +1,7 @@
 import React from "react";
 import { getData,createData } from "../utils/API";
 
-import { Button , Row, Col, Form, Input, Select} from "antd";
+import { Button , Form, Input, Select} from "antd";
 import "antd/dist/antd.css";
 const FormItem = Form.Item;
 

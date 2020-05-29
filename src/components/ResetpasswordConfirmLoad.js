@@ -1,17 +1,11 @@
 import React from 'react';
-import{
-    Link 
-  } from 'react-router-dom';
-import { Layout, Menu, Breadcrumb } from 'antd';
+
+import { Layout, Menu } from 'antd';
 import {
     HomeOutlined ,
-    LoginOutlined,
-    UserOutlined,
+
 } from '@ant-design/icons';
-import Login from './Login';
-import Signup from './Signup';
-import Home from './Home';
-import ResetPassword from './ResetPassword';
+
 import ResetPasswordConfirm from './ResetPasswordConfirm';
 
 const { Header, Content, Footer, Sider } = Layout;

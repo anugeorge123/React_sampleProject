@@ -5,46 +5,46 @@ import{
   Route,
   Link 
 } from 'react-router-dom';
-import Home from './components/Home';
 import Signup from './components/Signup';
 import Login from './components/Login';
-import ResetPassword from './components/ResetPassword';
-import ResetPasswordConfirm from './components/ResetPasswordConfirm';
-import EditProfile from './components/EditProfile';
 import { Logout } from './components/Logout';
 import SocialLogin from './components/SocialButton';
+import HomePage from './components/HomePage';
+import Myprofile from './components/Myprofile';
+import ForgotpasswordLoad from './components/ForgotpasswordLoad';
+import ResetPasswordConfirmLoad from './components/ResetpasswordConfirmLoad';
+import AdminDashboard from './components/AdminDashboard';
+import PrivateRoute from './components/PrivateRoute';
+import AddNewRecordLoad from './components/AddNewRecordLoad';
 
 export default class App extends Component {
+ 
   render() {
     return (
         
-
         <Router>
           <div>
             <ul>
-            <li>
-              <Link to="/">Home</Link>
-              </li>
-              <li>
-              <Link to="/signup">SignUp</Link>
-              </li>
-              <li>
-              <Link to="/login">Login</Link>
-              </li>
-              
+
+              <Link to="/"></Link>
+              <Link to="/signup"></Link>
+              <Link to="/login"></Link>
               <Link to="/resetpassword"></Link>          
               <Link to="/resetpassword-confirm"></Link>
               <Link to="/editprofile"></Link>
               <Link to="/logout"></Link>
-              <li> <Link to="/sociallogin">Login with facebook/Google</Link></li>
-             
-
+              <Link to="/sociallogin"></Link>
+              <Link to="/home"></Link>
+              <Link to="/profile"></Link>     
+              <Link to="/adminDashboard"></Link>
+              <Link to="/addNewRecordLoad"></Link>
+              <Link to="/addNewRecord"></Link>
             </ul>
           </div>
           
           <Switch>
             <Route exact path="/" >
-              <Home/>
+            <HomePage />
             </Route> 
 
             <Route path="/signup" >
@@ -56,14 +56,10 @@ export default class App extends Component {
             </Route> 
 
             <Route path="/resetpassword">
-              <ResetPassword />
+              < ForgotpasswordLoad/>
             </Route>
             <Route path="/resetpassword-confirm">
-              <ResetPasswordConfirm />
-            </Route>
-
-            <Route path="/editprofile">
-              <EditProfile />
+              <ResetPasswordConfirmLoad />
             </Route>
 
             <Route path="/logout">
@@ -74,6 +70,16 @@ export default class App extends Component {
               <SocialLogin />
             </Route>
 
+            <Route path="/myprofile">
+              <Myprofile />
+             </Route> 
+
+            <PrivateRoute component={AdminDashboard} path="/adminDashboard" exact />
+
+            <Route path="/addNewRecord">
+              <AddNewRecordLoad />
+             </Route> 
+          
           </Switch>
         
         </Router>

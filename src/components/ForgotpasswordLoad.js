@@ -7,11 +7,7 @@ import {
     HomeOutlined ,
     LoginOutlined,
     UserOutlined,
-   SecurityScanOutlined 
 } from '@ant-design/icons';
-import Login from './Login';
-import Signup from './Signup';
-import Home from './Home';
 import ResetPassword from './ResetPassword';
 
 const { Header, Content, Footer, Sider } = Layout;

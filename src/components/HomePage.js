@@ -8,8 +8,7 @@ import {
     LoginOutlined,
     UserOutlined,
 } from '@ant-design/icons';
-import Login from './Login';
-import Signup from './Signup';
+
 import Home from './Home';
 import './../../src/content.css';
 

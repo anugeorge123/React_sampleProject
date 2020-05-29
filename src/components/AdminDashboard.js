@@ -4,16 +4,17 @@ import{
   } from 'react-router-dom';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import {
-    LogoutOutlined,
-
-    ProfileOutlined
+    HomeOutlined ,
+    LoginOutlined,
+    DashboardOutlined,
+    LogoutOutlined
 } from '@ant-design/icons';
 
-import EditProfile from './EditProfile';
+import AdminDashboardContent from'./AdminDashboardContent';
 
 const { Header, Content, Footer, Sider } = Layout;
 
-class Myprofile extends React.Component {
+class AdminDashboard extends React.Component {
   state = {
     collapsed: false,
   };
@@ -29,21 +30,18 @@ class Myprofile extends React.Component {
         <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-           
-            <Menu.Item key="1" icon={<ProfileOutlined />}>
-               <Link to="/myprofile">Profile</Link>
+            <Menu.Item key="1" icon={<DashboardOutlined />}>
+            <Link to="/adminDashboard">DASHBOARD</Link> 
             </Menu.Item>
-
-            <Menu.Item key="2" icon={<LogoutOutlined />}>
-            <Link to="/addNewRecord">Add New Record</Link> 
+            <Menu.Item key="2" icon={<HomeOutlined />}>
+            <Link to="/">HOME</Link> 
             </Menu.Item>
-
-
             <Menu.Item key="3" icon={<LogoutOutlined />}>
-            <Link to="/logout">Logout</Link> 
+            <Link to="/logout">LOGOUT</Link> 
             </Menu.Item>
-          
-           
+            
+            
+                       
           </Menu>
         </Sider>
         <Layout className="site-layout">
@@ -55,7 +53,7 @@ class Myprofile extends React.Component {
             </Breadcrumb>
 
             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-             <EditProfile/>
+             <AdminDashboardContent/>
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>copyright ©2020 Created by Anu</Footer>
@@ -76,4 +74,4 @@ class Myprofile extends React.Component {
   background: #fff;
 } */
  
-export default Myprofile;
+export default AdminDashboard;

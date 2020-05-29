@@ -41,7 +41,7 @@ const layout = {
 
 
 
-class Signup extends Component{
+class AddNewRecord extends Component{
 
     constructor(){
 
@@ -71,13 +71,13 @@ class Signup extends Component{
         else{
             console.log("login")
             // alert("you are already logged in, Please logout for another sign-up")
-            if(role==='Admin')
-            {
-                window.location="/adminDashboard"
-            }
-            else{
-                window.location="/myprofile"
-            }
+            // if(role==='Admin')
+            // {
+            //     window.location="/adminDashboard"
+            // }
+            // else{
+            //     window.location="/myprofile"
+            // }
           
             
         }
@@ -180,12 +180,12 @@ class Signup extends Component{
             <div>
                <Form >
                <FormItem  style={{ marginLeft: 100 }}>
-                   <br /><br /><br /><br /><br /><br /><br /><br /><br />
-                <Row type= "flex"  style={{ marginLeft: 700 }}  >
-                <h1>Signup</h1></Row><br/>
+                   
+                <Row type= "flex"  style={{ marginLeft: 300 }}  >
+                <h1>Add Partner</h1></Row><br/>
                 </FormItem>
 
-                  <Row style={{ marginLeft: 450 }}>
+                  <Row style={{ marginLeft: 150 }}>
                   <FormItem   {...layout} label ="Username" name = "username"> 
                  {/* <Input type='text' name='username' onChange={this.handleChange} style={{ width: 400 }} size="middle"/> */}
                 <Input onChange={this.handleChange} style={{ width: 300 }}size="large" name = "username"/>
@@ -199,7 +199,7 @@ class Signup extends Component{
                       
                       </Row>   <br/> 
                
-                <Row style={{ marginLeft: 455 }}>
+                <Row style={{ marginLeft: 155 }}>
                  <FormItem  {...layout} label ="  E-mail" >
 
                  {/* <Row type= "flex"  style={{ marginLeft: 700 }}  > */}
@@ -219,12 +219,12 @@ class Signup extends Component{
 
                  </FormItem>
                  </Row> <br/>
-                 <Row style={{ marginLeft:450 }}>
+                 <Row style={{ marginLeft:150 }}>
                         
-                 <FormItem  {...layout} label ="Country" >
+                 <FormItem  {...layout} label ="Country" name = "country">
                         {/* <Row type= "flex"  style={{ marginLeft: 700 }}  > */}
                         {/* <b>Country : </b> */}
-                         <Select  value={this.state.selectValue}  onChange={this.fetchCountry} style={{ width: 300 }} size="large" name = "country">
+                         <Select  onChange={this.fetchCountry} style={{ width: 300 }} size="large">
                          {this.state.country}
                          </Select> 
                          {/* </Row> */}
@@ -234,18 +234,18 @@ class Signup extends Component{
                  <FormItem  {...layout} label ="State" name = "state">
                          {/* <Row type= "flex"  style={{ marginLeft: 700 }}  > */}
                          {/* <b>State :</b>  */}
-                         <Select value={this.state.selectValue}  onChange={this.handleChange} style={{ marginRight: 310, width: 300 }} size="large"  name = "state">
+                         <Select value={this.state.selectValue}  onChange={this.handleChange} style={{ marginRight: 310, width: 300 }} size="large">
                          {this.state.state}
                          </Select> 
                          {/* </Row> */}
                          {/* <br/><br/> */}
                 </FormItem>   
                 </Row><br/>
-                <Row style={{ marginLeft: 455 }}>
-                <FormItem  {...layout} label ="City"  >
+                <Row style={{ marginLeft: 155 }}>
+                <FormItem  {...layout} label ="City" name = "city" >
                          {/* <Row type= "flex"  style={{ marginLeft: 700 }}  >  */}
                          {/* <b>City :</b>  */}
-                         <Select onChange={this.handleChange}  value={this.state.selectValue}  style={{ width: 300 }} size="large" name = "city">
+                         <Select value={this.state.selectValue}  onChange={this.handleChange} style={{ width: 300 }} size="large">
                          {this.state.city}
                          </Select>                        
                          {/*</Row> */}
@@ -253,8 +253,8 @@ class Signup extends Component{
                 </FormItem >
                 
                          <FormItem {...tailLayout}>
-                         <Button type="primary" onClick={this.handleSubmit} style={{ marginRight: 200}}>Sign Up</Button>
-                         <a href="/login">{' '}Already have an account? Login</a> 
+                         <Button type="primary" onClick={this.handleSubmit} style={{ marginRight: 200}}>Submit</Button>
+                         
                          </FormItem>    
                    </Row>  
                          </Form>
@@ -268,4 +268,4 @@ class Signup extends Component{
 }
 
 
-export default Signup;
+export default AddNewRecord;

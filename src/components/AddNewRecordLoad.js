@@ -4,16 +4,22 @@ import{
   } from 'react-router-dom';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import {
+    HomeOutlined ,
+    LoginOutlined,
+    UserOutlined,
     LogoutOutlined,
-
+    DashboardOutlined,
     ProfileOutlined
 } from '@ant-design/icons';
-
+import Login from './Login';
+import Signup from './Signup';
+import Home from './Home';
 import EditProfile from './EditProfile';
+import AddNewRecord from './AddNewRecord';
 
 const { Header, Content, Footer, Sider } = Layout;
 
-class Myprofile extends React.Component {
+class AddNewRecordLoad extends React.Component {
   state = {
     collapsed: false,
   };
@@ -34,7 +40,7 @@ class Myprofile extends React.Component {
                <Link to="/myprofile">Profile</Link>
             </Menu.Item>
 
-            <Menu.Item key="2" icon={<LogoutOutlined />}>
+            <Menu.Item key="2" icon={<ProfileOutlined />}>
             <Link to="/addNewRecord">Add New Record</Link> 
             </Menu.Item>
 
@@ -55,7 +61,7 @@ class Myprofile extends React.Component {
             </Breadcrumb>
 
             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-             <EditProfile/>
+             <AddNewRecord/>
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>copyright ©2020 Created by Anu</Footer>
@@ -76,4 +82,4 @@ class Myprofile extends React.Component {
   background: #fff;
 } */
  
-export default Myprofile;
+export default AddNewRecordLoad;

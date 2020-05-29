@@ -2,7 +2,7 @@ import React from "react";
 import axios from 'axios';
 import {API_PATH} from '../config';
 
-import { Button , Row, Col, Form, Input, Select} from "antd";
+import { Button ,  Form, Input} from "antd";
 import "antd/dist/antd.css";
 const FormItem = Form.Item;
 const layout = {
